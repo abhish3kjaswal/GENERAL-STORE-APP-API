@@ -4,7 +4,6 @@ const { check, validationResult } = require('express-validator/check');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const Vendor = require('../models/Vendor');
-const VendorList = require('../models/VendorList');
 
 const config = require('config');
 const jwt = require('jsonwebtoken');
@@ -57,17 +56,17 @@ router.post(
       vendor.password = await bcrypt.hash(password, salt);
 
       await vendor.save();
-
-      //cretaing payload
-      const payload = {
-        vendor: {
-          id: vendor.id,
-        },
-      };
-      jwt.sign(payload, secret, { expiresIn: 360000 }, (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      });
+      res.send('vendor regitered');
+      // //cretaing payload
+      // const payload = {
+      //   vendor: {
+      //     id: vendor.id,
+      //   },
+      // };
+      // jwt.sign(payload, secret, { expiresIn: 360000 }, (err, token) => {
+      //   if (err) throw err;
+      //   res.json({ token });
+      // });
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
@@ -159,6 +158,7 @@ router.get('/list', auth, async (req, res) => {
       price: 123,
     },
   ];
+
   res.send(items);
 });
 

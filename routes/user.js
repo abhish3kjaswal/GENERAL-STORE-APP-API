@@ -62,18 +62,19 @@ router.post(
 
       await user.save();
 
-      //create payload for jwt token with user id
-      const payload = {
-        user: {
-          id: user.id,
-        },
-      };
+      res.send('user registered');
+      // //create payload for jwt token with user id
+      // const payload = {
+      //   user: {
+      //     id: user.id,
+      //   },
+      // };
 
-      //sign jwt token with payload and secret
-      jwt.sign(payload, secret, { expiresIn: 360000 }, (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      });
+      // //sign jwt token with payload and secret
+      // jwt.sign(payload, secret, { expiresIn: 360000 }, (err, token) => {
+      //   if (err) throw err;
+      //   res.json({ token });
+      // });
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
