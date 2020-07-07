@@ -1,4 +1,4 @@
-# GENERAL-STORE-APP-API
+# GENERAL-STORE-APP-API(MongoDB, ExpressJS, NodeJs)
 ● Authentication and Registration API for customer and shopkeeper
 ● Choose the registration field accordingly for both customer and shopkeeper 
 
